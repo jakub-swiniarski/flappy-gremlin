@@ -48,7 +48,7 @@ ADDED from /home/panpole/Documents/GitHub/flappy-gremlin/android/AndroidManifest
 activity#com.mrfield.flappygremlin.AndroidLauncher
 ADDED from /home/panpole/Documents/GitHub/flappy-gremlin/android/AndroidManifest.xml:15:9-25:20
 	android:screenOrientation
-		ADDED from /home/panpole/Documents/GitHub/flappy-gremlin/android/AndroidManifest.xml:18:13-50
+		ADDED from /home/panpole/Documents/GitHub/flappy-gremlin/android/AndroidManifest.xml:18:13-49
 	android:label
 		ADDED from /home/panpole/Documents/GitHub/flappy-gremlin/android/AndroidManifest.xml:17:13-45
 	android:exported
