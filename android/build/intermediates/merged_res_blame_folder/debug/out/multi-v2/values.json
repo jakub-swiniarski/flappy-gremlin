@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mrfield.flappygremlin.android-mergeDebugResources-3:/values/values.xml",
+            "map": [
+                {
+                    "source": "/home/panpole/Documents/GitHub/flappy-gremlin/android/res/values/strings.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "56",
+                        "endColumns": "51",
+                        "endOffsets": "103"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "111",
+                        "endColumns": "51",
+                        "endOffsets": "158"
+                    }
+                },
+                {
+                    "source": "/home/panpole/Documents/GitHub/flappy-gremlin/android/res/values/color.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}
