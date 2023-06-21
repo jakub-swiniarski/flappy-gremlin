@@ -1,31 +1,30 @@
 package com.mrfield.flappygremlin;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class FlappyGremlin extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Player player;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		player=new Player();
 	}
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 1, 1);
 		batch.begin();
-		batch.draw(img, 0, 0);
+		batch.draw(player.img,player.rect.x,player.rect.y);
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		player.img.dispose();
 	}
 }
