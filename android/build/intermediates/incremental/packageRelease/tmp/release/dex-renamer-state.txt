@@ -1,0 +1,4 @@
+#Thu Jun 22 13:01:53 CEST 2023
+base.0=/home/panpole/Documents/GitHub/flappy-gremlin/android/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

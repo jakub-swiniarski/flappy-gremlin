@@ -9,6 +9,7 @@ public class Player {
     public Rectangle rect;
     public float velocity;
     public boolean jumping;
+    public int points;
 
     public Player(){
         img=new Texture(Gdx.files.internal("gremlin.png"));
@@ -19,6 +20,7 @@ public class Player {
         rect.y=(int)(Gdx.graphics.getHeight()/2)-rect.height/2;
         velocity=0f;
         jumping=false;
+        points=0;
     }
 
     public void update(){
