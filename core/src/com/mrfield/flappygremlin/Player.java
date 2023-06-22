@@ -2,18 +2,22 @@ package com.mrfield.flappygremlin;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Player {
     public Texture img;
+    public TextureRegion imgR;
     public Rectangle rect;
     private float velocity;
     private boolean jumping;
     public int points;
     private float dt;
+    public float rotation;
 
     public Player(){
         img=new Texture(Gdx.files.internal("gremlin.png"));
+        imgR=new TextureRegion(img,0,0,256,256);
         rect=new Rectangle();
         rect.width=256;
         rect.height=256;
@@ -22,6 +26,7 @@ public class Player {
         velocity=0f;
         jumping=false;
         points=0;
+        rotation=0f;
     }
 
     public void update(){
@@ -29,15 +34,18 @@ public class Player {
         if(Gdx.input.justTouched()){
             velocity=350*dt;
             jumping=true;
+            rotation=0;
         }
 
         if(jumping){
             rect.y+=velocity;
             velocity+=35*dt;
+            rotation+=0.5;
         }
         else{
             rect.y+=velocity;
             velocity-=35*dt;
+            rotation-=0.5;
         }
 
         if(velocity>=1200*dt){

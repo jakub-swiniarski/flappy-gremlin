@@ -1,4 +1,4 @@
-#Thu Jun 22 14:58:01 CEST 2023
+#Thu Jun 22 16:57:41 CEST 2023
 base.0=/home/panpole/Documents/GitHub/flappy-gremlin/android/build/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
 path.0=classes.dex
+renamed.0=classes.dex
