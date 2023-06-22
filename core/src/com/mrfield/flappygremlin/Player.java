@@ -7,9 +7,10 @@ import com.badlogic.gdx.math.Rectangle;
 public class Player {
     public Texture img;
     public Rectangle rect;
-    public float velocity;
-    public boolean jumping;
+    private float velocity;
+    private boolean jumping;
     public int points;
+    private float dt;
 
     public Player(){
         img=new Texture(Gdx.files.internal("gremlin.png"));
@@ -24,21 +25,22 @@ public class Player {
     }
 
     public void update(){
+        dt=Gdx.graphics.getDeltaTime();
         if(Gdx.input.justTouched()){
-            velocity=10;
+            velocity=350*dt;
             jumping=true;
         }
 
         if(jumping){
             rect.y+=velocity;
-            velocity++;
+            velocity+=35*dt;
         }
         else{
             rect.y+=velocity;
-            velocity--;
+            velocity-=35*dt;
         }
 
-        if(velocity>=25){
+        if(velocity>=1200*dt){
             jumping=false;
             velocity=0;
         }
