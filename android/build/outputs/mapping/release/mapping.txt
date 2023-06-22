@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: a80a62b
-# pg_map_hash: SHA-256 a80a62bc77f82f6070d70314cd659b2226e0657a01b06f3a0be14c07ab17a174
+# pg_map_id: 9790225
+# pg_map_hash: SHA-256 9790225169b0ca6f2d8d6df62dd322d713aa28d5ef988ddc806487f39cf3fc0c
 com.badlogic.gdx.AbstractGraphics -> a.a:
 com.badlogic.gdx.AbstractInput -> a.b:
     com.badlogic.gdx.utils.IntSet keysToCatch -> c
@@ -75,6 +75,7 @@ com.badlogic.gdx.Graphics -> a.j:
     boolean supportsExtension(java.lang.String) -> e
     com.badlogic.gdx.Graphics$DisplayMode getDisplayMode() -> f
     void requestRendering() -> g
+    float getDeltaTime() -> h
 com.badlogic.gdx.Graphics$BufferFormat -> a.j$a:
     int stencil -> f
     int samples -> g
@@ -329,24 +330,25 @@ com.badlogic.gdx.backends.android.AndroidGraphics -> c.l:
     boolean supportsExtension(java.lang.String) -> e
     com.badlogic.gdx.Graphics$DisplayMode getDisplayMode() -> f
     void requestRendering() -> g
-    void clearManagedCaches() -> h
-    com.badlogic.gdx.backends.android.surfaceview.GLSurfaceView20 createGLSurfaceView(com.badlogic.gdx.backends.android.AndroidApplicationBase,com.badlogic.gdx.backends.android.surfaceview.ResolutionStrategy) -> i
-    void destroy() -> j
-    int getAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int) -> k
-    android.opengl.GLSurfaceView$EGLConfigChooser getEglConfigChooser() -> l
-    android.view.View getView() -> m
-    boolean isContinuousRendering() -> n
-    void logConfig(javax.microedition.khronos.egl.EGLConfig) -> o
-    void logManagedCachesStatus() -> p
-    void onPauseGLSurfaceView() -> q
-    void onResumeGLSurfaceView() -> r
-    void pause() -> s
-    void preserveEGLContextOnPause() -> t
-    void resume() -> u
-    void setContinuousRendering(boolean) -> v
-    void setupGL(javax.microedition.khronos.opengles.GL10) -> w
-    void updatePpi() -> x
-    void updateSafeAreaInsets() -> y
+    float getDeltaTime() -> h
+    void clearManagedCaches() -> i
+    com.badlogic.gdx.backends.android.surfaceview.GLSurfaceView20 createGLSurfaceView(com.badlogic.gdx.backends.android.AndroidApplicationBase,com.badlogic.gdx.backends.android.surfaceview.ResolutionStrategy) -> j
+    void destroy() -> k
+    int getAttrib(javax.microedition.khronos.egl.EGL10,javax.microedition.khronos.egl.EGLDisplay,javax.microedition.khronos.egl.EGLConfig,int,int) -> l
+    android.opengl.GLSurfaceView$EGLConfigChooser getEglConfigChooser() -> m
+    android.view.View getView() -> n
+    boolean isContinuousRendering() -> o
+    void logConfig(javax.microedition.khronos.egl.EGLConfig) -> p
+    void logManagedCachesStatus() -> q
+    void onPauseGLSurfaceView() -> r
+    void onResumeGLSurfaceView() -> s
+    void pause() -> t
+    void preserveEGLContextOnPause() -> u
+    void resume() -> v
+    void setContinuousRendering(boolean) -> w
+    void setupGL(javax.microedition.khronos.opengles.GL10) -> x
+    void updatePpi() -> y
+    void updateSafeAreaInsets() -> z
 com.badlogic.gdx.backends.android.AndroidGraphics$1 -> c.l$a:
     com.badlogic.gdx.backends.android.AndroidGraphics this$0 -> a
 com.badlogic.gdx.backends.android.AndroidGraphics$AndroidDisplayMode -> c.l$b:
@@ -2065,6 +2067,7 @@ com.mrfield.flappygremlin.FlappyGremlin -> m.a:
     com.mrfield.flappygremlin.Player player -> b
     com.badlogic.gdx.graphics.g2d.BitmapFont fontSmall -> i
     com.badlogic.gdx.graphics.g2d.BitmapFont fontBig -> h
+    boolean passed -> j
     boolean gameOver -> e
     com.badlogic.gdx.graphics.g2d.SpriteBatch batch -> a
     com.mrfield.flappygremlin.Tree[] tree -> c
@@ -2076,12 +2079,15 @@ com.mrfield.flappygremlin.FlappyGremlin -> m.a:
     void render() -> e
     void reset() -> g
 com.mrfield.flappygremlin.Player -> m.b:
+    float dt -> f
     float velocity -> c
+    int points -> e
     com.badlogic.gdx.math.Rectangle rect -> b
     com.badlogic.gdx.graphics.Texture img -> a
     boolean jumping -> d
     void update() -> a
 com.mrfield.flappygremlin.Tree -> m.c:
+    float dt -> c
     com.badlogic.gdx.math.Rectangle rect -> b
     com.badlogic.gdx.graphics.Texture img -> a
     void update() -> a
