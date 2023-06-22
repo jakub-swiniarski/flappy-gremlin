@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Tree {
     public Texture img;
     public Rectangle rect;
+    private float dt;
 
     public Tree(){
         img=new Texture(Gdx.files.internal("tree.png"));
@@ -18,6 +19,7 @@ public class Tree {
     }
 
     public void update(){
-        rect.x-=10;
+        dt=Gdx.graphics.getDeltaTime();
+        rect.x-=450*dt;
     }
 }
