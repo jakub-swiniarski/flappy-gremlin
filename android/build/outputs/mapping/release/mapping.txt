@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 9790225
-# pg_map_hash: SHA-256 9790225169b0ca6f2d8d6df62dd322d713aa28d5ef988ddc806487f39cf3fc0c
+# pg_map_id: 3ebafff
+# pg_map_hash: SHA-256 3ebafff176b20bf8904c020dac1501b45abb07245e15c3e8c1dc4b20275ad139
 com.badlogic.gdx.AbstractGraphics -> a.a:
 com.badlogic.gdx.AbstractInput -> a.b:
     com.badlogic.gdx.utils.IntSet keysToCatch -> c
@@ -1104,23 +1104,32 @@ com.badlogic.gdx.graphics.g2d.SpriteBatch -> g.f:
     com.badlogic.gdx.graphics.Mesh$VertexDataType defaultVertexDataType -> x
     int renderCalls -> u
     com.badlogic.gdx.graphics.Color color -> s
+    void setupMatrices() -> A
+    void switchTexture(com.badlogic.gdx.graphics.Texture) -> B
     void dispose() -> a
     void draw(com.badlogic.gdx.graphics.Texture,float[],int,int) -> l
     void begin() -> q
     com.badlogic.gdx.graphics.glutils.ShaderProgram createDefaultShader() -> r
     void draw(com.badlogic.gdx.graphics.Texture,float,float) -> s
     void draw(com.badlogic.gdx.graphics.Texture,float,float,float,float) -> t
-    void end() -> u
-    void flush() -> v
-    boolean isBlendingEnabled() -> w
-    void setupMatrices() -> x
-    void switchTexture(com.badlogic.gdx.graphics.Texture) -> y
+    void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float) -> u
+    void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float,float,float) -> v
+    void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float,float,float,float,float,float,float,float) -> w
+    void end() -> x
+    void flush() -> y
+    boolean isBlendingEnabled() -> z
 com.badlogic.gdx.graphics.g2d.TextureAtlas$AtlasRegion -> g.g:
+    int originalHeight -> n
     float offsetY -> j
-    int originalHeight -> l
+    int packedHeight -> l
+    boolean rotate -> o
     java.lang.String name -> h
     float offsetX -> i
-    int packedHeight -> k
+    int originalWidth -> m
+    int packedWidth -> k
+    void flip(boolean,boolean) -> a
+    float getRotatedPackedHeight() -> g
+    float getRotatedPackedWidth() -> h
 com.badlogic.gdx.graphics.g2d.TextureRegion -> g.h:
     float v2 -> e
     float u2 -> d
@@ -1129,11 +1138,12 @@ com.badlogic.gdx.graphics.g2d.TextureRegion -> g.h:
     int regionHeight -> g
     float u -> b
     com.badlogic.gdx.graphics.Texture texture -> a
-    int getRegionHeight() -> a
-    int getRegionWidth() -> b
-    com.badlogic.gdx.graphics.Texture getTexture() -> c
-    void setRegion(float,float,float,float) -> d
-    void setRegion(int,int,int,int) -> e
+    void flip(boolean,boolean) -> a
+    int getRegionHeight() -> b
+    int getRegionWidth() -> c
+    com.badlogic.gdx.graphics.Texture getTexture() -> d
+    void setRegion(float,float,float,float) -> e
+    void setRegion(int,int,int,int) -> f
 com.badlogic.gdx.graphics.g2d.freetype.FreeType -> com.badlogic.gdx.graphics.g2d.freetype.FreeType:
     int FT_LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH -> O
     int FT_ENCODING_ADOBE_CUSTOM -> l
@@ -1648,10 +1658,14 @@ com.badlogic.gdx.graphics.glutils.VertexData -> h.p:
     void setVertices(float[],int,int) -> n
 com.badlogic.gdx.math.MathUtils -> i.a:
     java.util.Random random -> a
-    boolean isEqual(float,float,float) -> a
-    boolean isPowerOfTwo(int) -> b
-    int nextPowerOfTwo(int) -> c
-    int roundPositive(float) -> d
+    float cosDeg(float) -> a
+    boolean isEqual(float,float,float) -> b
+    boolean isPowerOfTwo(int) -> c
+    int nextPowerOfTwo(int) -> d
+    int roundPositive(float) -> e
+    float sinDeg(float) -> f
+com.badlogic.gdx.math.MathUtils$Sin -> i.a$a:
+    float[] table -> a
 com.badlogic.gdx.math.Matrix4 -> com.badlogic.gdx.math.Matrix4:
     com.badlogic.gdx.math.Vector3 l_vez -> d
     com.badlogic.gdx.math.Vector3 l_vex -> e
@@ -2063,11 +2077,17 @@ com.badlogic.gdx.utils.reflect.Constructor -> l.c:
     java.lang.Object newInstance(java.lang.Object[]) -> b
     void setAccessible(boolean) -> c
 com.badlogic.gdx.utils.reflect.ReflectionException -> l.d:
-com.mrfield.flappygremlin.FlappyGremlin -> m.a:
+com.mrfield.flappygremlin.BG -> m.a:
+    float dt -> c
+    com.badlogic.gdx.math.Rectangle rect -> b
+    com.badlogic.gdx.graphics.Texture img -> a
+    void update() -> a
+com.mrfield.flappygremlin.FlappyGremlin -> m.b:
     com.mrfield.flappygremlin.Player player -> b
     com.badlogic.gdx.graphics.g2d.BitmapFont fontSmall -> i
     com.badlogic.gdx.graphics.g2d.BitmapFont fontBig -> h
     boolean passed -> j
+    com.mrfield.flappygremlin.BG[] bg -> k
     boolean gameOver -> e
     com.badlogic.gdx.graphics.g2d.SpriteBatch batch -> a
     com.mrfield.flappygremlin.Tree[] tree -> c
@@ -2078,16 +2098,19 @@ com.mrfield.flappygremlin.FlappyGremlin -> m.a:
     void create() -> d
     void render() -> e
     void reset() -> g
-com.mrfield.flappygremlin.Player -> m.b:
-    float dt -> f
-    float velocity -> c
-    int points -> e
-    com.badlogic.gdx.math.Rectangle rect -> b
+com.mrfield.flappygremlin.Player -> m.c:
+    float rotation -> h
+    float dt -> g
+    com.badlogic.gdx.graphics.g2d.TextureRegion imgR -> b
+    float velocity -> d
+    boolean jumping -> e
+    int points -> f
     com.badlogic.gdx.graphics.Texture img -> a
-    boolean jumping -> d
+    com.badlogic.gdx.math.Rectangle rect -> c
     void update() -> a
-com.mrfield.flappygremlin.Tree -> m.c:
-    float dt -> c
-    com.badlogic.gdx.math.Rectangle rect -> b
+com.mrfield.flappygremlin.Tree -> m.d:
+    com.badlogic.gdx.graphics.g2d.TextureRegion imgR -> b
+    float dt -> d
     com.badlogic.gdx.graphics.Texture img -> a
+    com.badlogic.gdx.math.Rectangle rect -> c
     void update() -> a

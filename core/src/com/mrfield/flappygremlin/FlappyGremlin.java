@@ -18,6 +18,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 	BitmapFont fontBig, fontSmall;
 	boolean passed;
+	BG[] bg = new BG[2];
 
 	public void reset(){
 		player=new Player();
@@ -34,6 +35,11 @@ public class FlappyGremlin extends ApplicationAdapter {
 
 		tree[3].rect.x=9999;
 		tree[3].rect.y=1380;
+
+		for(int i=0; i<2; i++){
+			bg[i]=new BG();
+			bg[i].rect.x=i*bg[i].rect.width;
+		}
 
 		passed=false;
 	}
@@ -68,6 +74,10 @@ public class FlappyGremlin extends ApplicationAdapter {
 	public void render () {
 		ScreenUtils.clear(0, 1, 1, 1);
 		batch.begin();
+		for(int i=0; i<2; i++){
+			batch.draw(bg[i].img,bg[i].rect.x,bg[i].rect.y);
+			if(gameStarted)bg[i].update();
+		}
 		batch.draw(player.imgR,player.rect.x,player.rect.y,0,0,player.rect.width,player.rect.height,1,1,player.rotation);
 		if(gameStarted)player.update();
 		for(int i=0; i<4; i++){
@@ -139,5 +149,8 @@ public class FlappyGremlin extends ApplicationAdapter {
 		fontSmall.dispose();
 		fontBig.dispose();
 		generator.dispose();
+		for(int i=0; i<2; i++){
+			bg[i].img.dispose();
+		}
 	}
 }
