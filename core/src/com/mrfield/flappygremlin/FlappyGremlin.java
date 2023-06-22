@@ -43,7 +43,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 		for(int i=0; i<4; i++) {
 			tree[i] = new Tree();
 			if (!(i % 2 == 0)) {
-				tree[i].img = new Texture(Gdx.files.internal("treeF.png"));
+				tree[i].imgR.flip(false,true);
 			}
 		}
 		reset();
@@ -68,10 +68,10 @@ public class FlappyGremlin extends ApplicationAdapter {
 	public void render () {
 		ScreenUtils.clear(0, 1, 1, 1);
 		batch.begin();
-		batch.draw(player.img,player.rect.x,player.rect.y);
+		batch.draw(player.imgR,player.rect.x,player.rect.y,0,0,player.rect.width,player.rect.height,1,1,player.rotation);
 		if(gameStarted)player.update();
 		for(int i=0; i<4; i++){
-			batch.draw(tree[i].img,tree[i].rect.x,tree[i].rect.y);
+			batch.draw(tree[i].imgR,tree[i].rect.x,tree[i].rect.y);
 			if(gameStarted)tree[i].update();
 		}
 
