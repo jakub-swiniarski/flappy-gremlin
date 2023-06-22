@@ -17,9 +17,12 @@ public class FlappyGremlin extends ApplicationAdapter {
 	FreeTypeFontGenerator generator;
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 	BitmapFont fontBig, fontSmall;
+	boolean passed;
 
 	public void reset(){
 		player=new Player();
+		player.points=0;
+
 		tree[0].rect.x=1080*2;
 		tree[0].rect.y=-200;
 
@@ -31,6 +34,8 @@ public class FlappyGremlin extends ApplicationAdapter {
 
 		tree[3].rect.x=9999;
 		tree[3].rect.y=1380;
+
+		passed=false;
 	}
 	@Override
 	public void create () {
@@ -83,10 +88,14 @@ public class FlappyGremlin extends ApplicationAdapter {
 			gameStarted=true;
 			gameOver=false;
 		}
+		if(gameStarted){
+			fontBig.draw(batch, Integer.toString(player.points), 480,1800);
+		}
 
 		batch.end();
 
 		if(tree[2].rect.x<0-tree[2].rect.width){
+			passed=false;
 			tree[2].rect.x=1080*3;
 			tree[3].rect.x=1080*3;
 			tree[0].rect.x=1080;
@@ -97,6 +106,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 		}
 
 		if(tree[0].rect.x<0-tree[0].rect.width){
+			passed=false;
 			tree[0].rect.x=1080*3;
 			tree[1].rect.x=1080*3;
 			tree[2].rect.x=1080;
@@ -106,8 +116,13 @@ public class FlappyGremlin extends ApplicationAdapter {
 			tree[3].rect.y=1300+(float)Math.random() * 201;
 		}
 
+		if((player.rect.x>tree[0].rect.x || player.rect.x>tree[2].rect.x) && !passed){
+			passed=true;
+			player.points++;
+		}
+
 		for(int i=0; i<4; i++){
-			if(player.rect.overlaps(tree[i].rect) || player.rect.y<=0){
+			if(player.rect.overlaps(tree[i].rect) || player.rect.y<=0 || player.rect.y+player.rect.height>=Gdx.graphics.getHeight()){
 				gameStarted=false;
 				gameOver=true;
 			}
