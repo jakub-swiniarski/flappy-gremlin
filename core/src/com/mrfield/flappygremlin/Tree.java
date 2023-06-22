@@ -18,6 +18,6 @@ public class Tree {
     }
 
     public void update(){
-
+        rect.x-=10;
     }
 }
