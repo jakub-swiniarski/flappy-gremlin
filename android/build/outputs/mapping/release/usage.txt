@@ -2140,9 +2140,6 @@ com.badlogic.gdx.graphics.g2d.SpriteBatch:
     public void draw(com.badlogic.gdx.graphics.Texture,float,float,float,float,float,float,float,float,float,int,int,int,int,boolean,boolean)
     public void draw(com.badlogic.gdx.graphics.Texture,float,float,float,float,int,int,int,int,boolean,boolean)
     public void draw(com.badlogic.gdx.graphics.Texture,float,float,int,int,int,int)
-    public void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float)
-    public void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float,float,float)
-    public void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float,float,float,float,float,float,float,float)
     public void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float,float,float,float,float,float,float,float,boolean)
     public void draw(com.badlogic.gdx.graphics.g2d.TextureRegion,float,float,com.badlogic.gdx.math.Affine2)
     public void enableBlending()
@@ -2170,17 +2167,11 @@ com.badlogic.gdx.graphics.g2d.TextureAtlas$AtlasRegion:
     public int degrees
     public int index
     public java.lang.String[] names
-    public int originalWidth
-    public int packedWidth
-    public boolean rotate
     public int[][] values
     public void <init>(com.badlogic.gdx.graphics.Texture,int,int,int,int)
     public void <init>(com.badlogic.gdx.graphics.g2d.TextureAtlas$AtlasRegion)
     public void <init>(com.badlogic.gdx.graphics.g2d.TextureRegion)
     public int[] findValue(java.lang.String)
-    public void flip(boolean,boolean)
-    public float getRotatedPackedHeight()
-    public float getRotatedPackedWidth()
 com.badlogic.gdx.graphics.g2d.TextureAtlas$AtlasSprite
 com.badlogic.gdx.graphics.g2d.TextureAtlas$TextureAtlasData$10
 com.badlogic.gdx.graphics.g2d.TextureAtlas$TextureAtlasData$11
@@ -2204,10 +2195,8 @@ com.badlogic.gdx.graphics.g2d.TextureAtlas
 com.badlogic.gdx.graphics.g2d.TextureRegion:
     public void <init>(com.badlogic.gdx.graphics.Texture,float,float,float,float)
     public void <init>(com.badlogic.gdx.graphics.Texture,int,int)
-    public void <init>(com.badlogic.gdx.graphics.Texture,int,int,int,int)
     public void <init>(com.badlogic.gdx.graphics.g2d.TextureRegion)
     public void <init>(com.badlogic.gdx.graphics.g2d.TextureRegion,int,int,int,int)
-    public void flip(boolean,boolean)
     public int getRegionX()
     public int getRegionY()
     public float getU()
@@ -2946,7 +2935,8 @@ com.badlogic.gdx.math.Interpolation
 com.badlogic.gdx.math.Intersector$MinimumTranslationVector
 com.badlogic.gdx.math.Intersector$SplitTriangle
 com.badlogic.gdx.math.Intersector
-com.badlogic.gdx.math.MathUtils$Sin
+com.badlogic.gdx.math.MathUtils$Sin:
+    private void <init>()
 com.badlogic.gdx.math.MathUtils:
     private static final double BIG_ENOUGH_CEIL
     private static final double BIG_ENOUGH_FLOOR
@@ -2984,7 +2974,6 @@ com.badlogic.gdx.math.MathUtils:
     public static long clamp(long,long,long)
     public static short clamp(short,short,short)
     public static float cos(float)
-    public static float cosDeg(float)
     public static int floor(float)
     public static int floorPositive(float)
     public static boolean isEqual(float,float)
@@ -3013,7 +3002,6 @@ com.badlogic.gdx.math.MathUtils:
     public static float randomTriangular(float,float,float)
     public static int round(float)
     public static float sin(float)
-    public static float sinDeg(float)
 com.badlogic.gdx.math.Matrix3
 com.badlogic.gdx.math.Matrix4:
     public static final int M00
