@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.mrfield.flappygremlin.android-merged_res-5:/values_values.arsc.flat",
+            "outputFile": "/home/panpole/.gradle/daemon/7.5.1/com.mrfield.flappygremlin.android-merged_res-5:/values_values.arsc.flat",
             "map": [
                 {
                     "source": "/home/panpole/Documents/GitHub/flappy-gremlin/android/res/values/strings.xml",
