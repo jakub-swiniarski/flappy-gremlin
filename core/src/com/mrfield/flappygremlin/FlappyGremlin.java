@@ -111,7 +111,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 			tree[0].rect.x=1080;
 			tree[1].rect.x=1080;
 
-			tree[0].rect.y=-100-(float)Math.random() * 201;
+			tree[0].rect.y=-200-(float)Math.random() * 201;
 			tree[1].rect.y=1500-(float)Math.random() * 201;
 		}
 
@@ -123,7 +123,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 			tree[3].rect.x=1080;
 
 			tree[2].rect.y=-500+(float)Math.random() * 201;
-			tree[3].rect.y=1300+(float)Math.random() * 201;
+			tree[3].rect.y=1400+(float)Math.random() * 201;
 		}
 
 		if((player.rect.x>tree[0].rect.x || player.rect.x>tree[2].rect.x) && !passed){
