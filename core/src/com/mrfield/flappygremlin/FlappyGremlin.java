@@ -65,7 +65,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 		fontBig = generator.generateFont(parameter);
 
 		parameter.size=56;
-		parameter.borderWidth=1;
+		parameter.borderWidth=2;
 		fontSmall=generator.generateFont(parameter);
 
 	}
