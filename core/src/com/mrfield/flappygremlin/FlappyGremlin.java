@@ -3,7 +3,6 @@ package com.mrfield.flappygremlin;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -12,7 +11,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class FlappyGremlin extends ApplicationAdapter {
 	SpriteBatch batch;
 	Player player;
-	Tree[] tree = new Tree[4];
+	Tree[] tree = new Tree[2];
 	boolean gameStarted, gameOver;
 	FreeTypeFontGenerator generator;
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
@@ -27,14 +26,8 @@ public class FlappyGremlin extends ApplicationAdapter {
 		tree[0].rect.x=1080*2;
 		tree[0].rect.y=-200;
 
-		tree[1].rect.y=1600;
 		tree[1].rect.x=1080*2;
-
-		tree[2].rect.x=9999;
-		tree[2].rect.y=-250;
-
-		tree[3].rect.x=9999;
-		tree[3].rect.y=1380;
+		tree[1].rect.y=1600;
 
 		for(int i=0; i<2; i++){
 			bg[i]=new BG();
@@ -46,12 +39,10 @@ public class FlappyGremlin extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		for(int i=0; i<4; i++) {
+		for(int i=0; i<2; i++) {
 			tree[i] = new Tree();
-			if (!(i % 2 == 0)) {
-				tree[i].imgR.flip(false,true);
-			}
 		}
+		tree[1].imgR.flip(false,true);
 		reset();
 
 		gameStarted=false;
@@ -76,14 +67,15 @@ public class FlappyGremlin extends ApplicationAdapter {
 		batch.begin();
 		for(int i=0; i<2; i++){
 			batch.draw(bg[i].img,bg[i].rect.x,bg[i].rect.y);
-			if(gameStarted)bg[i].update();
+			batch.draw(tree[i].imgR,tree[i].rect.x,tree[i].rect.y);
+
+			if(gameStarted){
+				bg[i].update();
+				tree[i].update();
+			}
 		}
 		batch.draw(player.imgR,player.rect.x,player.rect.y,0,0,player.rect.width,player.rect.height,1,1,player.rotation);
 		if(gameStarted)player.update();
-		for(int i=0; i<4; i++){
-			batch.draw(tree[i].imgR,tree[i].rect.x,tree[i].rect.y);
-			if(gameStarted)tree[i].update();
-		}
 
 		if(!gameStarted && !gameOver){
 			fontBig.draw(batch, "FLAPPY GREMLIN", 60, 1500);
@@ -104,34 +96,21 @@ public class FlappyGremlin extends ApplicationAdapter {
 
 		batch.end();
 
-		if(tree[2].rect.x<0-tree[2].rect.width){
+		if(tree[0].rect.x<0-tree[0].rect.width){
 			passed=false;
-			tree[2].rect.x=1080*3;
-			tree[3].rect.x=1080*3;
 			tree[0].rect.x=1080;
 			tree[1].rect.x=1080;
 
-			tree[0].rect.y=-200-(float)Math.random() * 201;
-			tree[1].rect.y=1500-(float)Math.random() * 201;
+			tree[0].rect.y=-500+(float)Math.random() * 201;
+			tree[1].rect.y=1400+(float)Math.random() * 201;
 		}
 
-		if(tree[0].rect.x<0-tree[0].rect.width){
-			passed=false;
-			tree[0].rect.x=1080*3;
-			tree[1].rect.x=1080*3;
-			tree[2].rect.x=1080;
-			tree[3].rect.x=1080;
-
-			tree[2].rect.y=-500+(float)Math.random() * 201;
-			tree[3].rect.y=1400+(float)Math.random() * 201;
-		}
-
-		if((player.rect.x>tree[0].rect.x || player.rect.x>tree[2].rect.x) && !passed){
+		if(player.rect.x>tree[0].rect.x && !passed){
 			passed=true;
 			player.points++;
 		}
 
-		for(int i=0; i<4; i++){
+		for(int i=0; i<2; i++){
 			if(player.rect.overlaps(tree[i].rect) || player.rect.y<=0 || player.rect.y+player.rect.height>=Gdx.graphics.getHeight()){
 				gameStarted=false;
 				gameOver=true;
@@ -143,14 +122,12 @@ public class FlappyGremlin extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		player.img.dispose();
-		for(int i=0; i<4; i++){
+		for(int i=0; i<2; i++){
 			tree[i].img.dispose();
+			bg[i].img.dispose();
 		}
 		fontSmall.dispose();
 		fontBig.dispose();
 		generator.dispose();
-		for(int i=0; i<2; i++){
-			bg[i].img.dispose();
-		}
 	}
 }
