@@ -2,11 +2,12 @@ package com.mrfield.flappygremlin;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Tree {
-    public Texture img;
+    private Texture img;
     public TextureRegion imgR;
     public Rectangle rect;
     private float dt;
@@ -24,5 +25,13 @@ public class Tree {
     public void update(){
         dt=Gdx.graphics.getDeltaTime();
         rect.x-=450*dt;
+    }
+
+    public void draw(SpriteBatch batch){
+        batch.draw(imgR, rect.x, rect.y);
+    }
+
+    public void dispose(){
+        img.dispose();
     }
 }
