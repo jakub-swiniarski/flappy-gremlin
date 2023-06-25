@@ -2,10 +2,11 @@ package com.mrfield.flappygremlin;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 public class BG {
-    public Texture img;
+    private Texture img;
     public Rectangle rect;
     private float dt;
 
@@ -24,5 +25,13 @@ public class BG {
         if(rect.x+rect.width<=0){
             rect.x=rect.width;
         }
+    }
+
+    public void draw(SpriteBatch batch){
+        batch.draw(img, rect.x, rect.y);
+    }
+
+    public void dispose(){
+        img.dispose();
     }
 }
