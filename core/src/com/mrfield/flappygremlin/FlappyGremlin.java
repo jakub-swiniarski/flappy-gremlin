@@ -66,7 +66,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 		ScreenUtils.clear(0, 1, 1, 1);
 		batch.begin();
 		for(int i=0; i<2; i++){
-			batch.draw(bg[i].img,bg[i].rect.x,bg[i].rect.y);
+			bg[i].dispose();
 			batch.draw(tree[i].imgR,tree[i].rect.x,tree[i].rect.y);
 
 			if(gameStarted){
@@ -74,7 +74,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 				tree[i].update();
 			}
 		}
-		batch.draw(player.imgR,player.rect.x,player.rect.y,0,0,player.rect.width,player.rect.height,1,1,player.rotation);
+		player.draw(batch);
 		if(gameStarted)player.update();
 
 		if(!gameStarted && !gameOver){
@@ -121,10 +121,10 @@ public class FlappyGremlin extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		player.img.dispose();
+		player.dispose();
 		for(int i=0; i<2; i++){
 			tree[i].img.dispose();
-			bg[i].img.dispose();
+			bg[i].dispose();
 		}
 		fontSmall.dispose();
 		fontBig.dispose();
