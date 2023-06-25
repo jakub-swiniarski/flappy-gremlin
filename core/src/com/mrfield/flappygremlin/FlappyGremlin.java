@@ -66,8 +66,8 @@ public class FlappyGremlin extends ApplicationAdapter {
 		ScreenUtils.clear(0, 1, 1, 1);
 		batch.begin();
 		for(int i=0; i<2; i++){
-			bg[i].dispose();
-			batch.draw(tree[i].imgR,tree[i].rect.x,tree[i].rect.y);
+			bg[i].draw(batch);
+			tree[i].draw(batch);
 
 			if(gameStarted){
 				bg[i].update();
@@ -123,7 +123,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 		batch.dispose();
 		player.dispose();
 		for(int i=0; i<2; i++){
-			tree[i].img.dispose();
+			tree[i].dispose();
 			bg[i].dispose();
 		}
 		fontSmall.dispose();
