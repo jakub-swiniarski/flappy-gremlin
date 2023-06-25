@@ -3,8 +3,8 @@
 # min_api: 14
 # common_typos_disable
 # {"id":"com.android.tools.r8.mapping","version":"2.0"}
-# pg_map_id: 3ebafff
-# pg_map_hash: SHA-256 3ebafff176b20bf8904c020dac1501b45abb07245e15c3e8c1dc4b20275ad139
+# pg_map_id: 400debf
+# pg_map_hash: SHA-256 400debf0adac939ba7b47f59b54dcc6081270823347f668026644b5c3491923d
 com.badlogic.gdx.AbstractGraphics -> a.a:
 com.badlogic.gdx.AbstractInput -> a.b:
     com.badlogic.gdx.utils.IntSet keysToCatch -> c
@@ -2081,7 +2081,9 @@ com.mrfield.flappygremlin.BG -> m.a:
     float dt -> c
     com.badlogic.gdx.math.Rectangle rect -> b
     com.badlogic.gdx.graphics.Texture img -> a
-    void update() -> a
+    void dispose() -> a
+    void draw(com.badlogic.gdx.graphics.g2d.SpriteBatch) -> b
+    void update() -> c
 com.mrfield.flappygremlin.FlappyGremlin -> m.b:
     com.mrfield.flappygremlin.Player player -> b
     com.badlogic.gdx.graphics.g2d.BitmapFont fontSmall -> i
@@ -2107,10 +2109,14 @@ com.mrfield.flappygremlin.Player -> m.c:
     int points -> f
     com.badlogic.gdx.graphics.Texture img -> a
     com.badlogic.gdx.math.Rectangle rect -> c
-    void update() -> a
+    void dispose() -> a
+    void draw(com.badlogic.gdx.graphics.g2d.SpriteBatch) -> b
+    void update() -> c
 com.mrfield.flappygremlin.Tree -> m.d:
     com.badlogic.gdx.graphics.g2d.TextureRegion imgR -> b
     float dt -> d
     com.badlogic.gdx.graphics.Texture img -> a
     com.badlogic.gdx.math.Rectangle rect -> c
-    void update() -> a
+    void dispose() -> a
+    void draw(com.badlogic.gdx.graphics.g2d.SpriteBatch) -> b
+    void update() -> c
