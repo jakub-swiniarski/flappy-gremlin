@@ -1,4 +1,4 @@
-# Flappy Gremlin ![icon](https://github.com/PanPolePL/flappy-gremlin/assets/77209709/d74025f6-aa84-477a-b3af-05bca7944f52)
+# Flappy Gremlin
 ## How to install?
 1. Download the .apk file from this repository. Go to **android/build/outputs/apk/debug/** and download **android-debug.apk**.
 2. Once you have the file on your android device, go to settings and **allow installations from unknown sources**.
