@@ -1,8 +1,0 @@
-com.mrfield.flappygremlin.android-pngs-0 /home/panpole/Documents/GitHub/flappy-gremlin/android/build/generated/res/pngs/release
-com.mrfield.flappygremlin.android-resValues-1 /home/panpole/Documents/GitHub/flappy-gremlin/android/build/generated/res/resValues/release
-com.mrfield.flappygremlin.android-rs-2 /home/panpole/Documents/GitHub/flappy-gremlin/android/build/generated/res/rs/release
-com.mrfield.flappygremlin.android-mergeReleaseResources-3 /home/panpole/Documents/GitHub/flappy-gremlin/android/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
-com.mrfield.flappygremlin.android-mergeReleaseResources-4 /home/panpole/Documents/GitHub/flappy-gremlin/android/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
-com.mrfield.flappygremlin.android-merged_res-5 /home/panpole/Documents/GitHub/flappy-gremlin/android/build/intermediates/merged_res/release
-com.mrfield.flappygremlin.android-android-6 /home/panpole/Documents/GitHub/flappy-gremlin/android/res
-com.mrfield.flappygremlin.android-release-7 /home/panpole/Documents/GitHub/flappy-gremlin/android/src/release/res
