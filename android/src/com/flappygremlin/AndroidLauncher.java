@@ -1,4 +1,4 @@
-package com.mrfield.flappygremlin;
+package com.flappygremlin;
 
 import android.os.Bundle;
 

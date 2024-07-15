@@ -1,4 +1,4 @@
-package com.mrfield.flappygremlin;
+package com.flappygremlin;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
