@@ -3,7 +3,6 @@ package com.flappygremlin;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -20,7 +19,7 @@ public class Game extends ApplicationAdapter {
 	BitmapFont fontBig, fontSmall;
 	BG[] bg = new BG[2];
 	GameStatus game_status;
-	GlyphLayout glyphLayout;
+	FontDrawer font_drawer;
 
 	public enum GameStatus {
 		MENU,
@@ -41,7 +40,7 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		glyphLayout = new GlyphLayout();
+		font_drawer = new FontDrawer(batch);
 		for(int i=0; i<2; i++) {
 			tree[i] = new Tree(0, 0);
 			bg[i] = new BG(0, 0);
@@ -70,15 +69,11 @@ public class Game extends ApplicationAdapter {
 
 		switch (game_status) {
 			case MENU:
-				glyphLayout.setText(fontBig, "FLAPPY GREMLIN");
-				fontBig.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 100);
-				glyphLayout.setText(fontSmall, "TOUCH THE SCREEN TO START");
-				fontSmall.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 200);
+				font_drawer.draw_centered(fontBig, "FLAPPY GREMLIN", 100);
+				font_drawer.draw_centered(fontSmall, "TOUCH THE SCREEN TO START", 200);
 				break;
 			case IN_PROGRESS:
-				glyphLayout.setText(fontBig, Integer.toString(player.get_points()));
-				fontBig.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 100);
-
+				font_drawer.draw_centered(fontBig, Integer.toString(player.get_points()), 100);
 				for(int i=0; i<2; i++) {
 					bg[i].update(dt);
 					tree[i].update(dt);
@@ -86,10 +81,8 @@ public class Game extends ApplicationAdapter {
 				player.update(dt);
 				break;
 			case OVER:
-				glyphLayout.setText(fontBig, "GAME OVER!");
-				fontBig.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 100);
-				glyphLayout.setText(fontSmall, "TOUCH THE SCREEN TO START AGAIN");
-				fontSmall.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 200);
+				font_drawer.draw_centered(fontBig, "GAME OVER!", 100);
+				font_drawer.draw_centered(fontSmall, "TOUCH THE SCREEN TO START AGAIN", 200);
 				break;
 		}
 
