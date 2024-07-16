@@ -45,7 +45,7 @@ public class Game extends ApplicationAdapter {
 			tree[i] = new Tree(0, 0);
 			bg[i] = new BG(0, 0);
 		}
-		tree[1].imgR.flip(false,true);
+		tree[1].flip_img_reg(false,true);
 		reset();
 
 		game_status = GameStatus.MENU;

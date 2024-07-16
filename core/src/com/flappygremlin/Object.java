@@ -9,9 +9,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class Object {
     private final Texture img;
-    public TextureRegion imgR;
+    private TextureRegion imgR;
     private final Rectangle rect;
     private final Vector2 speed;
+    private final float rotation;
 
     Object(String img_path, float x, float y) {
         img=new Texture(Gdx.files.internal(img_path));
@@ -22,6 +23,7 @@ public abstract class Object {
         rect.x=x;
         rect.y=y;
         speed = new Vector2(0, 0);
+        rotation = 0.0f;
     }
 
     public Rectangle get_rect() {
@@ -47,13 +49,17 @@ public abstract class Object {
         speed.y += y;
     }
 
+    public void flip_img_reg(boolean x, boolean y) {
+        imgR.flip(x, y);
+    }
+
     public void update(float dt) {
         rect.x += speed.x * dt;
         rect.y += speed.y * dt;
     }
 
-    public void draw(SpriteBatch batch){
-        batch.draw(imgR, rect.x, rect.y);
+    public void draw(SpriteBatch batch) {
+        batch.draw(imgR, get_rect().x, get_rect().y, 0.0f, 0.0f, get_rect().width, get_rect().height, 1.0f, 1.0f, rotation);
     }
 
     public void dispose(){

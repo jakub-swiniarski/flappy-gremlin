@@ -4,23 +4,23 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player extends Object {
-    private static final float ACCEL_GRAVITY = -500;
-    private static final float SPEED_JUMP = 600;
-    private static final float SPEED_ROTATION = 20;
+    private static final float ACCEL_GRAVITY  = -500.0f;
+    private static final float SPEED_JUMP     = 600.0f;
+    private static final float SPEED_ROTATION = 20.0f;
 
-    private int points;
-    private float rotation;
+    private int     points;
+    private float   rotation;
     private boolean passed;
 
-    public Player(){
-        super("gremlin.png", 0, 0);
+    public Player() {
+        super("gremlin.png", 0.0f, 0.0f);
         set_pos(
-            (int)(Gdx.graphics.getWidth()/2)-get_rect().width/2,
-            (int)(Gdx.graphics.getHeight()/2)-get_rect().height/2
+            (Gdx.graphics.getWidth() / 2.0f) - get_rect().width / 2.0f,
+            (Gdx.graphics.getHeight() / 2.0f) - get_rect().height / 2.0f
         );
-        points=0;
-        rotation=0f;
-        passed = false;
+        points   = 0;
+        rotation = 0f;
+        passed   = false;
     }
 
     public int get_points() {
@@ -40,18 +40,13 @@ public class Player extends Object {
     }
 
     @Override
-    public void update(float dt){
+    public void update(float dt) {
         super.update(dt);
-        if(Gdx.input.justTouched()){
-            set_speed(0, SPEED_JUMP);
-            rotation=0;
+        if (Gdx.input.justTouched()) {
+            set_speed(0.0f, SPEED_JUMP);
+            rotation = 0.0f;
         }
-        add_speed(0, ACCEL_GRAVITY * dt);
-        rotation += (float)((get_speed().y > 0) ? (SPEED_ROTATION * dt) : (-SPEED_ROTATION * dt));
-    }
-
-    @Override
-    public void draw(SpriteBatch batch){
-        batch.draw(imgR, get_rect().x, get_rect().y, 0, 0, get_rect().width, get_rect().height, 1, 1, rotation);
+        add_speed(0.0f, ACCEL_GRAVITY * dt);
+        rotation += (get_speed().y > 0.0f) ? (SPEED_ROTATION * dt) : (-SPEED_ROTATION * dt);
     }
 }
