@@ -5,4 +5,7 @@ An open-source Flappy Bird clone
 <img width=50% height=auto src="https://github.com/user-attachments/assets/111a5f3c-a849-4a4d-9741-b34ed5aaf11a">
 
 ## How to install?
-Download the .apk file from the latest release.
+- Download the .apk file from the latest release.
+- Once you have the file on your android device, go to settings and allow installations from unknown sources.
+- Open the .apk file and proceed with the installation.
+That's it! Now you should be able to run the game from your home screen.
