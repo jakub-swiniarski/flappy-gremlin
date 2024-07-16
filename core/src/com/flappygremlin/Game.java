@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class FlappyGremlin extends ApplicationAdapter {
+public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	Player player;
 	Tree[] tree = new Tree[2];
