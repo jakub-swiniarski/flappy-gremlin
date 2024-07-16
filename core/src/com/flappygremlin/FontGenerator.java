@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class FontGenerator {
-    FreeTypeFontGenerator generator;
-    FreeTypeFontGenerator.FreeTypeFontParameter parameter;
+    private final FreeTypeFontGenerator generator;
+    private final FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 
     FontGenerator(String font_path) {
         generator = new FreeTypeFontGenerator(Gdx.files.internal(font_path));

@@ -8,10 +8,10 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Object {
-    public Texture img;
+    private final Texture img;
     public TextureRegion imgR;
     public Rectangle rect;
-    public Vector2 speed;
+    protected Vector2 speed;
 
     Object(String img_path, float x, float y) {
         img=new Texture(Gdx.files.internal(img_path));
