@@ -30,7 +30,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 		tree[1].rect.y=1600;
 
 		for(int i=0; i<2; i++){
-			bg[i]=new BG();
+			bg[i]=new BG(0, 0);
 			bg[i].rect.x=i*bg[i].rect.width;
 		}
 
@@ -40,7 +40,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		for(int i=0; i<2; i++) {
-			tree[i] = new Tree();
+			tree[i] = new Tree(0, 0);
 		}
 		tree[1].imgR.flip(false,true);
 		reset();
