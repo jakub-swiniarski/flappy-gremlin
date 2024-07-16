@@ -20,10 +20,10 @@ public class Player extends Object {
     public void update(float dt){
         super.update(dt);
         if(Gdx.input.justTouched()){
-            set_speed(0, 450);
+            set_speed(0, 600);
             rotation=0;
         }
-        add_speed(0, -350 * dt);
+        add_speed(0, -500 * dt);
         rotation += (float)((get_speed().y > 0) ? (10 * dt) : (-10 * dt));
     }
 
