@@ -14,11 +14,11 @@ public class FontGenerator {
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
     }
 
-    BitmapFont generate_font(int size, int border_width, Color color, Color border_color) {
+    BitmapFont generate_font(int size, int border_width) {
         parameter.size = size;
         parameter.borderWidth = border_width;
-        parameter.color = color;
-        parameter.borderColor = border_color;
+        parameter.color = Color.WHITE;
+        parameter.borderColor = Color.LIME;
 
         return generator.generateFont(parameter);
     }

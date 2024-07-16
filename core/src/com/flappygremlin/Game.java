@@ -46,8 +46,8 @@ public class Game extends ApplicationAdapter {
 		gameOver=false;
 
 		FontGenerator font_generator = new FontGenerator("font.ttf");
-		fontBig = font_generator.generate_font(120, 3, Color.WHITE, Color.LIME);
-		fontSmall = font_generator.generate_font(56, 2, Color.WHITE, Color.LIME);
+		fontBig = font_generator.generate_font(120, 3);
+		fontSmall = font_generator.generate_font(56, 2);
 		font_generator.dispose();
 	}
 
