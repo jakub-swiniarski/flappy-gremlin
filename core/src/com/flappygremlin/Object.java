@@ -42,6 +42,11 @@ public abstract class Object {
         speed.y = y;
     }
 
+    public void add_speed(float x, float y) {
+        speed.x += x;
+        speed.y += y;
+    }
+
     public void update(float dt) {
         rect.x += speed.x * dt;
         rect.y += speed.y * dt;

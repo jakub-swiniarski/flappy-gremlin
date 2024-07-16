@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player extends Object {
-    private boolean jumping;
     public int points;
     private float rotation;
 
@@ -14,7 +13,6 @@ public class Player extends Object {
             (int)(Gdx.graphics.getWidth()/2)-get_rect().width/2,
             (int)(Gdx.graphics.getHeight()/2)-get_rect().height/2
         );
-        jumping=false;
         points=0;
         rotation=0f;
     }
@@ -22,24 +20,11 @@ public class Player extends Object {
     public void update(float dt){
         super.update(dt);
         if(Gdx.input.justTouched()){
-            set_speed(get_speed().x, 450);
-            jumping=true;
+            set_speed(0, 450);
             rotation=0;
         }
-
-        if(jumping){
-            set_speed(get_speed().x, get_speed().y + 35 * dt);
-            rotation+=0.5;
-        }
-        else{
-            set_speed(get_speed().x, get_speed().y - 35 * dt);
-            rotation-=0.5;
-        }
-
-        if(get_speed().y>=1200*dt){
-            jumping=false;
-            set_speed(get_speed().x, 0);
-        }
+        add_speed(0, -350 * dt);
+        rotation += (float)((get_speed().y > 0) ? (10 * dt) : (-10 * dt));
     }
 
     @Override
