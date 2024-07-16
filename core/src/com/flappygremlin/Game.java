@@ -10,7 +10,6 @@ public class Game extends ApplicationAdapter {
 	SpriteBatch batch;
 	Player player;
 	Tree[] tree = new Tree[2];
-	boolean gameStarted, gameOver;
 	BitmapFont fontBig, fontSmall;
 	boolean passed;
 	BG[] bg = new BG[2];
@@ -64,14 +63,8 @@ public class Game extends ApplicationAdapter {
 		for(int i=0; i<2; i++){
 			bg[i].draw(batch);
 			tree[i].draw(batch);
-
-			if(gameStarted){
-				bg[i].update(dt);
-				tree[i].update(dt);
-			}
 		}
 		player.draw(batch);
-		if(gameStarted)player.update(dt);
 
 		switch (game_status) {
 			case MENU:
@@ -80,15 +73,22 @@ public class Game extends ApplicationAdapter {
 				break;
 			case IN_PROGRESS:
 				fontBig.draw(batch, Integer.toString(player.points), 480,1800);
+
+				for(int i=0; i<2; i++) {
+					bg[i].update(dt);
+					tree[i].update(dt);
+				}
+				player.update(dt);
+				break;
 			case OVER:
 				fontBig.draw(batch, "GAME OVER!", 200, 1500);
 				fontSmall.draw(batch, "TOUCH THE SCREEN TO START AGAIN", 50, 1400);
+				break;
 		}
 
 		if(game_status != GameStatus.IN_PROGRESS && Gdx.input.justTouched()){
 			reset();
-			gameStarted=true;
-			gameOver=false;
+			game_status = GameStatus.IN_PROGRESS;
 		}
 
 		batch.end();
@@ -109,8 +109,7 @@ public class Game extends ApplicationAdapter {
 
 		for(int i=0; i<2; i++){
 			if(player.rect.overlaps(tree[i].rect) || player.rect.y<=0 || player.rect.y+player.rect.height>=Gdx.graphics.getHeight()){
-				gameStarted=false;
-				gameOver=true;
+				game_status = GameStatus.OVER;
 			}
 		}
 	}
