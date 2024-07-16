@@ -6,6 +6,7 @@ public class BG extends Object {
         set_speed(-45, 0);
     }
 
+    @Override
     public void update(float dt){
         super.update(dt);
         if(get_rect().x+get_rect().width<=0) {

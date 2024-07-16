@@ -5,8 +5,4 @@ public class Tree extends Object {
         super("tree.png", x, y);
         set_speed(-450, 0);
     }
-
-    public void update(float dt){
-        super.update(dt);
-    }
 }

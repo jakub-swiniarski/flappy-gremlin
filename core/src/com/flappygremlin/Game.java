@@ -23,13 +23,11 @@ public class Game extends ApplicationAdapter {
 
 	public void reset(){
 		player=new Player();
-		player.points=0;
 
 		tree[0].set_pos(1080 * 2, -200);
 		tree[1].set_pos(1080 * 2, 1600);
 
-		for(int i=0; i<2; i++){
-			bg[i]=new BG(0, 0);
+		for(int i=0; i<2; i++) {
 			bg[i].set_pos(i * bg[i].get_rect().width, 0);
 		}
 
@@ -40,6 +38,7 @@ public class Game extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		for(int i=0; i<2; i++) {
 			tree[i] = new Tree(0, 0);
+			bg[i] = new BG(0, 0);
 		}
 		tree[1].imgR.flip(false,true);
 		reset();
@@ -69,7 +68,7 @@ public class Game extends ApplicationAdapter {
 				fontSmall.draw(batch, "TOUCH THE SCREEN TO START", 150, 1400);
 				break;
 			case IN_PROGRESS:
-				fontBig.draw(batch, Integer.toString(player.points), 480,1800);
+				fontBig.draw(batch, Integer.toString(player.get_points()), 480,1800);
 
 				for(int i=0; i<2; i++) {
 					bg[i].update(dt);
@@ -83,12 +82,12 @@ public class Game extends ApplicationAdapter {
 				break;
 		}
 
+		batch.end();
+
 		if(game_status != GameStatus.IN_PROGRESS && Gdx.input.justTouched()){
 			reset();
 			game_status = GameStatus.IN_PROGRESS;
 		}
-
-		batch.end();
 
 		if(tree[0].get_rect().x<0-tree[0].get_rect().width){
 			passed=false;
@@ -98,7 +97,7 @@ public class Game extends ApplicationAdapter {
 
 		if(player.get_rect().x>tree[0].get_rect().x && !passed){
 			passed=true;
-			player.points++;
+			player.add_points(1);
 		}
 
 		for(int i=0; i<2; i++){

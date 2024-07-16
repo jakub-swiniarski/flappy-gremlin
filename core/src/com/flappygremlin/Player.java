@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player extends Object {
-    public int points;
+    private int points;
     private float rotation;
 
     public Player(){
@@ -17,6 +17,15 @@ public class Player extends Object {
         rotation=0f;
     }
 
+    public int get_points() {
+        return points;
+    }
+
+    public void add_points(int points) {
+        this.points += points;
+    }
+
+    @Override
     public void update(float dt){
         super.update(dt);
         if(Gdx.input.justTouched()){
