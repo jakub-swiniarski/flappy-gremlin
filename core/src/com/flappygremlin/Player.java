@@ -1,15 +1,9 @@
 package com.flappygremlin;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Rectangle;
 
-public class Player {
-    private Texture img;
-    private TextureRegion imgR;
-    public Rectangle rect;
+public class Player extends Object {
     private float velocity;
     private boolean jumping;
     public int points;
@@ -17,11 +11,7 @@ public class Player {
     private float rotation;
 
     public Player(){
-        img=new Texture(Gdx.files.internal("gremlin.png"));
-        imgR=new TextureRegion(img,0,0,256,256);
-        rect=new Rectangle();
-        rect.width=256;
-        rect.height=256;
+        super("gremlin.png", 0, 0);
         rect.x=(int)(Gdx.graphics.getWidth()/2)-rect.width/2;
         rect.y=(int)(Gdx.graphics.getHeight()/2)-rect.height/2;
         velocity=0f;
@@ -55,11 +45,8 @@ public class Player {
         }
     }
 
+    @Override
     public void draw(SpriteBatch batch){
         batch.draw(imgR,rect.x,rect.y,0,0,rect.width,rect.height,1,1,rotation);
-    }
-
-    public void dispose(){
-        img.dispose();
     }
 }
