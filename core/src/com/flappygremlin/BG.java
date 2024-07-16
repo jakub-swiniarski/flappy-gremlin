@@ -1,9 +1,11 @@
 package com.flappygremlin;
 
 public class BG extends Object {
+    private static final float SPEED_X = -45;
+
     public BG(float x, float y){
         super("bg.png", x, y);
-        set_speed(-45, 0);
+        set_speed(SPEED_X, 0);
     }
 
     @Override
