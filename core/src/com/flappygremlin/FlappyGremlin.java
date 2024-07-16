@@ -13,8 +13,6 @@ public class FlappyGremlin extends ApplicationAdapter {
 	Player player;
 	Tree[] tree = new Tree[2];
 	boolean gameStarted, gameOver;
-	FreeTypeFontGenerator generator;
-	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 	BitmapFont fontBig, fontSmall;
 	boolean passed;
 	BG[] bg = new BG[2];
@@ -48,17 +46,10 @@ public class FlappyGremlin extends ApplicationAdapter {
 		gameStarted=false;
 		gameOver=false;
 
-		generator = new FreeTypeFontGenerator(Gdx.files.internal("font.ttf"));
-		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-		parameter.size = 120;
-		parameter.borderWidth=3;
-		parameter.borderColor = Color.LIME;
-		fontBig = generator.generateFont(parameter);
-
-		parameter.size=56;
-		parameter.borderWidth=2;
-		fontSmall=generator.generateFont(parameter);
-
+		FontGenerator font_generator = new FontGenerator("font.ttf");
+		fontBig = font_generator.generate_font(120, 3, Color.WHITE, Color.LIME);
+		fontSmall = font_generator.generate_font(56, 2, Color.WHITE, Color.LIME);
+		font_generator.dispose();
 	}
 
 	@Override
@@ -129,6 +120,5 @@ public class FlappyGremlin extends ApplicationAdapter {
 		}
 		fontSmall.dispose();
 		fontBig.dispose();
-		generator.dispose();
 	}
 }
