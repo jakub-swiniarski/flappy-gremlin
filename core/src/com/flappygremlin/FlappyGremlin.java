@@ -63,6 +63,7 @@ public class FlappyGremlin extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		float dt = Gdx.graphics.getDeltaTime();
 		ScreenUtils.clear(0, 1, 1, 1);
 		batch.begin();
 		for(int i=0; i<2; i++){
@@ -70,12 +71,12 @@ public class FlappyGremlin extends ApplicationAdapter {
 			tree[i].draw(batch);
 
 			if(gameStarted){
-				bg[i].update();
-				tree[i].update();
+				bg[i].update(dt);
+				tree[i].update(dt);
 			}
 		}
 		player.draw(batch);
-		if(gameStarted)player.update();
+		if(gameStarted)player.update(dt);
 
 		if(!gameStarted && !gameOver){
 			fontBig.draw(batch, "FLAPPY GREMLIN", 60, 1500);
