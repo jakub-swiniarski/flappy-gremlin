@@ -25,15 +25,12 @@ public class Game extends ApplicationAdapter {
 		player=new Player();
 		player.points=0;
 
-		tree[0].rect.x=1080*2;
-		tree[0].rect.y=-200;
-
-		tree[1].rect.x=1080*2;
-		tree[1].rect.y=1600;
+		tree[0].set_pos(1080 * 2, -200);
+		tree[1].set_pos(1080 * 2, 1600);
 
 		for(int i=0; i<2; i++){
 			bg[i]=new BG(0, 0);
-			bg[i].rect.x=i*bg[i].rect.width;
+			bg[i].set_pos(i * bg[i].get_rect().width, 0);
 		}
 
 		passed=false;
@@ -93,22 +90,19 @@ public class Game extends ApplicationAdapter {
 
 		batch.end();
 
-		if(tree[0].rect.x<0-tree[0].rect.width){
+		if(tree[0].get_rect().x<0-tree[0].get_rect().width){
 			passed=false;
-			tree[0].rect.x=1080;
-			tree[1].rect.x=1080;
-
-			tree[0].rect.y=-500+(float)Math.random() * 201;
-			tree[1].rect.y=1400+(float)Math.random() * 201;
+			tree[0].set_pos(1080, -500+(float)Math.random() * 201);
+			tree[1].set_pos(1080, 1400+(float)Math.random() * 201);
 		}
 
-		if(player.rect.x>tree[0].rect.x && !passed){
+		if(player.get_rect().x>tree[0].get_rect().x && !passed){
 			passed=true;
 			player.points++;
 		}
 
 		for(int i=0; i<2; i++){
-			if(player.rect.overlaps(tree[i].rect) || player.rect.y<=0 || player.rect.y+player.rect.height>=Gdx.graphics.getHeight()){
+			if(player.get_rect().overlaps(tree[i].get_rect()) || player.get_rect().y<=0 || player.get_rect().y+player.get_rect().height>=Gdx.graphics.getHeight()){
 				game_status = GameStatus.OVER;
 			}
 		}

@@ -10,8 +10,8 @@ import com.badlogic.gdx.math.Vector2;
 public abstract class Object {
     private final Texture img;
     public TextureRegion imgR;
-    public Rectangle rect;
-    protected Vector2 speed;
+    private final Rectangle rect;
+    private final Vector2 speed;
 
     Object(String img_path, float x, float y) {
         img=new Texture(Gdx.files.internal(img_path));
@@ -22,6 +22,24 @@ public abstract class Object {
         rect.x=x;
         rect.y=y;
         speed = new Vector2(0, 0);
+    }
+
+    public Rectangle get_rect() {
+        return rect;
+    }
+
+    public void set_pos(float x, float y) {
+        rect.x = x;
+        rect.y = y;
+    }
+
+    public Vector2 get_speed() {
+        return speed;
+    }
+
+    public void set_speed(float x, float y) {
+        speed.x = x;
+        speed.y = y;
     }
 
     public void update(float dt) {

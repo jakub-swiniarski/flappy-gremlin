@@ -10,8 +10,10 @@ public class Player extends Object {
 
     public Player(){
         super("gremlin.png", 0, 0);
-        rect.x=(int)(Gdx.graphics.getWidth()/2)-rect.width/2;
-        rect.y=(int)(Gdx.graphics.getHeight()/2)-rect.height/2;
+        set_pos(
+            (int)(Gdx.graphics.getWidth()/2)-get_rect().width/2,
+            (int)(Gdx.graphics.getHeight()/2)-get_rect().height/2
+        );
         jumping=false;
         points=0;
         rotation=0f;
@@ -20,28 +22,28 @@ public class Player extends Object {
     public void update(float dt){
         super.update(dt);
         if(Gdx.input.justTouched()){
-            speed.y=350;
+            set_speed(get_speed().x, 450);
             jumping=true;
             rotation=0;
         }
 
         if(jumping){
-            speed.y+=35*dt;
+            set_speed(get_speed().x, get_speed().y + 35 * dt);
             rotation+=0.5;
         }
         else{
-            speed.y-=35*dt;
+            set_speed(get_speed().x, get_speed().y - 35 * dt);
             rotation-=0.5;
         }
 
-        if(speed.y>=1200*dt){
+        if(get_speed().y>=1200*dt){
             jumping=false;
-            speed.y=0;
+            set_speed(get_speed().x, 0);
         }
     }
 
     @Override
     public void draw(SpriteBatch batch){
-        batch.draw(imgR,rect.x,rect.y,0,0,rect.width,rect.height,1,1,rotation);
+        batch.draw(imgR, get_rect().x, get_rect().y, 0, 0, get_rect().width, get_rect().height, 1, 1, rotation);
     }
 }
