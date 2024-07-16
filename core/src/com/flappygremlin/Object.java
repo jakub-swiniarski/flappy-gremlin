@@ -35,8 +35,8 @@ public abstract class Object {
     }
 
     public void set_pos(float x, float y) {
-        rect.x = x;
-        rect.y = y;
+        rect.setX(x);
+        rect.setY(y);
     }
 
     public Vector2 get_speed() {

@@ -12,6 +12,7 @@ public class Game extends ApplicationAdapter {
 	private static final int FONT_SIZE_SMALL = 56;
 	private static final int FONT_BORDER_BIG = 3;
 	private static final int FONT_BORDER_SMALL = 2;
+	private static final float TREE_DISTANCE_Y = 1800;
 
 	SpriteBatch batch;
 	Player player;
@@ -31,7 +32,7 @@ public class Game extends ApplicationAdapter {
 		player=new Player();
 
 		tree[0].set_pos(Gdx.graphics.getWidth() * 2, -200);
-		tree[1].set_pos(Gdx.graphics.getWidth() * 2, 1600);
+		tree[1].set_pos(Gdx.graphics.getWidth() * 2, tree[0].get_rect().getY() + TREE_DISTANCE_Y);
 
 		for(int i=0; i<2; i++) {
 			bg[i].set_pos(i * bg[i].get_rect().width, 0);
@@ -95,8 +96,8 @@ public class Game extends ApplicationAdapter {
 
 		if(tree[0].get_rect().x<0-tree[0].get_rect().width){
 			player.set_passed(false);
-			tree[0].set_pos(1080, -500+(float)Math.random() * 200);
-			tree[1].set_pos(1080, 1400+(float)Math.random() * 200);
+			tree[0].set_pos(Gdx.graphics.getWidth(), -500+(float)Math.random() * 200);
+			tree[1].set_pos(Gdx.graphics.getWidth(), tree[0].get_rect().getY() + 1800);
 		}
 
 		if(player.get_rect().x>tree[0].get_rect().x && !player.has_passed()){
