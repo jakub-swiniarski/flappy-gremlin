@@ -3,6 +3,7 @@ package com.flappygremlin;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -19,6 +20,7 @@ public class Game extends ApplicationAdapter {
 	BitmapFont fontBig, fontSmall;
 	BG[] bg = new BG[2];
 	GameStatus game_status;
+	GlyphLayout glyphLayout;
 
 	public enum GameStatus {
 		MENU,
@@ -29,8 +31,8 @@ public class Game extends ApplicationAdapter {
 	public void reset(){
 		player=new Player();
 
-		tree[0].set_pos(1080 * 2, -200);
-		tree[1].set_pos(1080 * 2, 1600);
+		tree[0].set_pos(Gdx.graphics.getWidth() * 2, -200);
+		tree[1].set_pos(Gdx.graphics.getWidth() * 2, 1600);
 
 		for(int i=0; i<2; i++) {
 			bg[i].set_pos(i * bg[i].get_rect().width, 0);
@@ -39,6 +41,7 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		glyphLayout = new GlyphLayout();
 		for(int i=0; i<2; i++) {
 			tree[i] = new Tree(0, 0);
 			bg[i] = new BG(0, 0);
@@ -67,11 +70,14 @@ public class Game extends ApplicationAdapter {
 
 		switch (game_status) {
 			case MENU:
-				fontBig.draw(batch, "FLAPPY GREMLIN", 60, 1500);
-				fontSmall.draw(batch, "TOUCH THE SCREEN TO START", 150, 1400);
+				glyphLayout.setText(fontBig, "FLAPPY GREMLIN");
+				fontBig.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 100);
+				glyphLayout.setText(fontSmall, "TOUCH THE SCREEN TO START");
+				fontSmall.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 200);
 				break;
 			case IN_PROGRESS:
-				fontBig.draw(batch, Integer.toString(player.get_points()), 480,1800);
+				glyphLayout.setText(fontBig, Integer.toString(player.get_points()));
+				fontBig.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 100);
 
 				for(int i=0; i<2; i++) {
 					bg[i].update(dt);
@@ -80,8 +86,10 @@ public class Game extends ApplicationAdapter {
 				player.update(dt);
 				break;
 			case OVER:
-				fontBig.draw(batch, "GAME OVER!", 200, 1500);
-				fontSmall.draw(batch, "TOUCH THE SCREEN TO START AGAIN", 50, 1400);
+				glyphLayout.setText(fontBig, "GAME OVER!");
+				fontBig.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 100);
+				glyphLayout.setText(fontSmall, "TOUCH THE SCREEN TO START AGAIN");
+				fontSmall.draw(batch, glyphLayout, (Gdx.graphics.getWidth() - glyphLayout.width)/2, Gdx.graphics.getHeight() - 200);
 				break;
 		}
 
@@ -94,8 +102,8 @@ public class Game extends ApplicationAdapter {
 
 		if(tree[0].get_rect().x<0-tree[0].get_rect().width){
 			player.set_passed(false);
-			tree[0].set_pos(1080, -500+(float)Math.random() * 201);
-			tree[1].set_pos(1080, 1400+(float)Math.random() * 201);
+			tree[0].set_pos(1080, -500+(float)Math.random() * 200);
+			tree[1].set_pos(1080, 1400+(float)Math.random() * 200);
 		}
 
 		if(player.get_rect().x>tree[0].get_rect().x && !player.has_passed()){
