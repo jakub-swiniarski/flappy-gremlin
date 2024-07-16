@@ -8,22 +8,22 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Object {
-    private final Texture img;
+    private final Texture       img;
     private final TextureRegion img_reg;
-    private final Rectangle rect;
-    private final Vector2 speed;
-    private float rotation;
+    private final Rectangle     rect;
+    private final Vector2       speed;
+    private float               rotation;
 
     Object(String img_path, float x, float y) {
-        img=new Texture(Gdx.files.internal(img_path));
-        img_reg = new TextureRegion(img, 0, 0, img.getWidth(), img.getHeight());
-        rect=new Rectangle();
-        rect.width=img.getWidth();
-        rect.height=img.getHeight();
-        rect.x=x;
-        rect.y=y;
-        speed = new Vector2(0, 0);
-        rotation = 0.0f;
+        img         = new Texture(Gdx.files.internal(img_path));
+        img_reg     = new TextureRegion(img, 0, 0, img.getWidth(), img.getHeight());
+        rect        = new Rectangle();
+        rect.width  = img.getWidth();
+        rect.height = img.getHeight();
+        rect.x      = x;
+        rect.y      = y;
+        speed       = new Vector2(0, 0);
+        rotation    = 0.0f;
     }
 
     public void flip_img_reg(boolean x, boolean y) {
@@ -44,8 +44,7 @@ public abstract class Object {
     }
 
     public void set_speed(float x, float y) {
-        speed.x = x;
-        speed.y = y;
+        speed.set(x, y);
     }
 
     public void add_speed(float x, float y) {
