@@ -1,7 +1,6 @@
 package com.flappygremlin;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player extends Object {
     private static final float ACCEL_GRAVITY  = -500.0f;
@@ -9,7 +8,6 @@ public class Player extends Object {
     private static final float SPEED_ROTATION = 20.0f;
 
     private int     points;
-    private float   rotation;
     private boolean passed;
 
     public Player() {
@@ -19,7 +17,6 @@ public class Player extends Object {
             (Gdx.graphics.getHeight() / 2.0f) - get_rect().height / 2.0f
         );
         points   = 0;
-        rotation = 0f;
         passed   = false;
     }
 
@@ -44,9 +41,9 @@ public class Player extends Object {
         super.update(dt);
         if (Gdx.input.justTouched()) {
             set_speed(0.0f, SPEED_JUMP);
-            rotation = 0.0f;
+            set_rotation(0.0f);
         }
         add_speed(0.0f, ACCEL_GRAVITY * dt);
-        rotation += (get_speed().y > 0.0f) ? (SPEED_ROTATION * dt) : (-SPEED_ROTATION * dt);
+        add_rotation((get_speed().y > 0.0f) ? (SPEED_ROTATION * dt) : (-SPEED_ROTATION * dt));
     }
 }

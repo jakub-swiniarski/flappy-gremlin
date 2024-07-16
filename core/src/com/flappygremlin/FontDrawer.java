@@ -11,7 +11,7 @@ public class FontDrawer {
 
     FontDrawer(SpriteBatch batch) {
         glyph_layout = new GlyphLayout();
-        this.batch = batch;
+        this.batch   = batch;
     }
 
     public void draw_centered(BitmapFont font, String str, int offset_top) {

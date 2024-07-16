@@ -9,14 +9,14 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class Object {
     private final Texture img;
-    private TextureRegion imgR;
+    private final TextureRegion img_reg;
     private final Rectangle rect;
     private final Vector2 speed;
-    private final float rotation;
+    private float rotation;
 
     Object(String img_path, float x, float y) {
         img=new Texture(Gdx.files.internal(img_path));
-        imgR = new TextureRegion(img, 0, 0, img.getWidth(), img.getHeight());
+        img_reg = new TextureRegion(img, 0, 0, img.getWidth(), img.getHeight());
         rect=new Rectangle();
         rect.width=img.getWidth();
         rect.height=img.getHeight();
@@ -24,6 +24,10 @@ public abstract class Object {
         rect.y=y;
         speed = new Vector2(0, 0);
         rotation = 0.0f;
+    }
+
+    public void flip_img_reg(boolean x, boolean y) {
+        img_reg.flip(x, y);
     }
 
     public Rectangle get_rect() {
@@ -49,8 +53,12 @@ public abstract class Object {
         speed.y += y;
     }
 
-    public void flip_img_reg(boolean x, boolean y) {
-        imgR.flip(x, y);
+    public void set_rotation(float rotation) {
+        this.rotation = rotation;
+    }
+
+    public void add_rotation(float rotation) {
+        this.rotation += rotation;
     }
 
     public void update(float dt) {
@@ -59,7 +67,7 @@ public abstract class Object {
     }
 
     public void draw(SpriteBatch batch) {
-        batch.draw(imgR, get_rect().x, get_rect().y, 0.0f, 0.0f, get_rect().width, get_rect().height, 1.0f, 1.0f, rotation);
+        batch.draw(img_reg, get_rect().x, get_rect().y, 0.0f, 0.0f, get_rect().width, get_rect().height, 1.0f, 1.0f, rotation);
     }
 
     public void dispose(){
