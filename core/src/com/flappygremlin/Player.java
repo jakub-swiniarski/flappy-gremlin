@@ -10,6 +10,7 @@ public class Player extends Object {
 
     private int points;
     private float rotation;
+    private boolean passed;
 
     public Player(){
         super("gremlin.png", 0, 0);
@@ -19,6 +20,7 @@ public class Player extends Object {
         );
         points=0;
         rotation=0f;
+        passed = false;
     }
 
     public int get_points() {
@@ -27,6 +29,14 @@ public class Player extends Object {
 
     public void add_points(int points) {
         this.points += points;
+    }
+
+    public boolean has_passed() {
+        return passed;
+    }
+
+    public void set_passed(boolean passed) {
+        this.passed = passed;
     }
 
     @Override

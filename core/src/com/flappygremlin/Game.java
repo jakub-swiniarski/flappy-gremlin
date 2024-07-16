@@ -7,11 +7,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Game extends ApplicationAdapter {
+	private static final String FONT_NAME = "font.ttf";
+	private static final int FONT_SIZE_BIG = 120;
+	private static final int FONT_SIZE_SMALL = 56;
+	private static final int FONT_BORDER_BIG = 3;
+	private static final int FONT_BORDER_SMALL = 2;
+
 	SpriteBatch batch;
 	Player player;
 	Tree[] tree = new Tree[2];
 	BitmapFont fontBig, fontSmall;
-	boolean passed;
 	BG[] bg = new BG[2];
 	GameStatus game_status;
 
@@ -30,8 +35,6 @@ public class Game extends ApplicationAdapter {
 		for(int i=0; i<2; i++) {
 			bg[i].set_pos(i * bg[i].get_rect().width, 0);
 		}
-
-		passed=false;
 	}
 	@Override
 	public void create () {
@@ -45,9 +48,9 @@ public class Game extends ApplicationAdapter {
 
 		game_status = GameStatus.MENU;
 
-		FontGenerator font_generator = new FontGenerator("font.ttf");
-		fontBig = font_generator.generate_font(120, 3);
-		fontSmall = font_generator.generate_font(56, 2);
+		FontGenerator font_generator = new FontGenerator(FONT_NAME);
+		fontBig = font_generator.generate_font(FONT_SIZE_BIG, FONT_BORDER_BIG);
+		fontSmall = font_generator.generate_font(FONT_SIZE_SMALL, FONT_BORDER_SMALL);
 		font_generator.dispose();
 	}
 
@@ -90,13 +93,13 @@ public class Game extends ApplicationAdapter {
 		}
 
 		if(tree[0].get_rect().x<0-tree[0].get_rect().width){
-			passed=false;
+			player.set_passed(false);
 			tree[0].set_pos(1080, -500+(float)Math.random() * 201);
 			tree[1].set_pos(1080, 1400+(float)Math.random() * 201);
 		}
 
-		if(player.get_rect().x>tree[0].get_rect().x && !passed){
-			passed=true;
+		if(player.get_rect().x>tree[0].get_rect().x && !player.has_passed()){
+			player.set_passed(true);
 			player.add_points(1);
 		}
 
