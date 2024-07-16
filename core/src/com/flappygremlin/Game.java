@@ -2,7 +2,6 @@ package com.flappygremlin;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -15,6 +14,13 @@ public class Game extends ApplicationAdapter {
 	BitmapFont fontBig, fontSmall;
 	boolean passed;
 	BG[] bg = new BG[2];
+	GameStatus game_status;
+
+	public enum GameStatus {
+		MENU,
+		IN_PROGRESS,
+		OVER
+	}
 
 	public void reset(){
 		player=new Player();
@@ -42,8 +48,7 @@ public class Game extends ApplicationAdapter {
 		tree[1].imgR.flip(false,true);
 		reset();
 
-		gameStarted=false;
-		gameOver=false;
+		game_status = GameStatus.MENU;
 
 		FontGenerator font_generator = new FontGenerator("font.ttf");
 		fontBig = font_generator.generate_font(120, 3);
@@ -68,21 +73,22 @@ public class Game extends ApplicationAdapter {
 		player.draw(batch);
 		if(gameStarted)player.update(dt);
 
-		if(!gameStarted && !gameOver){
-			fontBig.draw(batch, "FLAPPY GREMLIN", 60, 1500);
-			fontSmall.draw(batch, "TOUCH THE SCREEN TO START", 150, 1400);
+		switch (game_status) {
+			case MENU:
+				fontBig.draw(batch, "FLAPPY GREMLIN", 60, 1500);
+				fontSmall.draw(batch, "TOUCH THE SCREEN TO START", 150, 1400);
+				break;
+			case IN_PROGRESS:
+				fontBig.draw(batch, Integer.toString(player.points), 480,1800);
+			case OVER:
+				fontBig.draw(batch, "GAME OVER!", 200, 1500);
+				fontSmall.draw(batch, "TOUCH THE SCREEN TO START AGAIN", 50, 1400);
 		}
-		if(gameOver){
-			fontBig.draw(batch, "GAME OVER!", 200, 1500);
-			fontSmall.draw(batch, "TOUCH THE SCREEN TO START AGAIN", 50, 1400);
-		}
-		if(!gameStarted && Gdx.input.justTouched()){
+
+		if(game_status != GameStatus.IN_PROGRESS && Gdx.input.justTouched()){
 			reset();
 			gameStarted=true;
 			gameOver=false;
-		}
-		if(gameStarted){
-			fontBig.draw(batch, Integer.toString(player.points), 480,1800);
 		}
 
 		batch.end();
