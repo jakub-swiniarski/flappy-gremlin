@@ -64,7 +64,9 @@ public class Game extends ApplicationAdapter {
 		ScreenUtils.clear(0, 1, 1, 1);
 		batch.begin();
 		for (int i = 0; i < 2; i++) {
-			bg[i].draw(batch);
+			if (bg[i].is_visible()) {
+				bg[i].draw(batch);
+			}
 			tree[i].draw(batch);
 		}
 		player.draw(batch);

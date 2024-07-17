@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class Object {
+    private static final Rectangle SCREEN_RECT = new Rectangle(0.0f, 0.0f, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
     private final Texture       img;
     private final TextureRegion img_reg;
     private final Rectangle     rect;
@@ -58,6 +60,10 @@ public abstract class Object {
 
     public void add_rotation(float rotation) {
         this.rotation += rotation;
+    }
+
+    public boolean is_visible() {
+        return get_rect().overlaps(SCREEN_RECT);
     }
 
     public void update(float dt) {
