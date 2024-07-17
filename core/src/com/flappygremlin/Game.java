@@ -67,8 +67,9 @@ public class Game extends ApplicationAdapter {
 			if (bg[i].is_visible()) {
 				bg[i].draw(batch);
 			}
-			if (game_status != GameStatus.MENU)
+			if (game_status != GameStatus.MENU) {
 				tree[i].draw(batch);
+			}
 		}
 		player.draw(batch);
 
