@@ -11,8 +11,8 @@ public class BG extends Object {
     @Override
     public void update(float dt) {
         super.update(dt);
-        if (get_rect().x + get_rect().width <= 0.0f) {
-            get_rect().x = get_rect().width;
+        if (get_rect().getX() + get_rect().getWidth() <= 0.0f) {
+            get_rect().setX(get_rect().getWidth());
         }
     }
 }

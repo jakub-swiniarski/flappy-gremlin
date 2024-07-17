@@ -36,7 +36,7 @@ public class Game extends ApplicationAdapter {
 		tree[1].set_pos(Gdx.graphics.getWidth() * 2, tree[0].get_rect().getY() + TREE_DISTANCE_Y);
 
 		for(int i = 0; i < 2; i++) {
-			bg[i].set_pos(i * bg[i].get_rect().width, 0);
+			bg[i].set_pos(i * bg[i].get_rect().getWidth(), 0);
 		}
 	}
 	@Override
@@ -99,13 +99,13 @@ public class Game extends ApplicationAdapter {
 			game_status = GameStatus.IN_PROGRESS;
 		}
 
-		if (tree[0].get_rect().x < -tree[0].get_rect().width) {
+		if (tree[0].get_rect().getX() < -tree[0].get_rect().getWidth()) {
 			player.set_passed(false);
 			tree[0].set_pos(Gdx.graphics.getWidth(), -500 + (float)Math.random() * 200);
 			tree[1].set_pos(Gdx.graphics.getWidth(), tree[0].get_rect().getY() + 1800);
 		}
 
-		if (player.get_rect().x > tree[0].get_rect().x && !player.has_passed()) {
+		if (player.get_rect().getX() > tree[0].get_rect().getX() && !player.has_passed()) {
 			player.set_passed(true);
 			player.add_points(1);
 		}
@@ -113,7 +113,7 @@ public class Game extends ApplicationAdapter {
 		for (int i = 0; i < 2; i++) {
 			if (player.get_rect().overlaps(tree[i].get_rect())
 			|| player.get_rect().y <= 0
-			|| player.get_rect().y + player.get_rect().height >= Gdx.graphics.getHeight()) {
+			|| player.get_rect().y + player.get_rect().getHeight() >= Gdx.graphics.getHeight()) {
 				game_status = GameStatus.OVER;
 			}
 		}
